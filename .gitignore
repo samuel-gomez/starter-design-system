@@ -1,0 +1,36 @@
+## IDE
+.vscode/
+.idea/
+
+## MacOs
+.DS_*
+
+## Node.js
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+## dependencies
+node_modules/
+.pnp/
+.pnp.js
+.yarn
+
+## testing
+coverage/
+junit-report.xml
+sonar-report.xml
+
+## production
+build/
+dist/
+
+## misc
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+## msw
+public/mockServiceWorker.js
