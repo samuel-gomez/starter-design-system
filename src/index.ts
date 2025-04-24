@@ -1,1 +1,1 @@
-console.log('Hello, world! This is a test.');
+console.info('Hello, world! This is a test.');
