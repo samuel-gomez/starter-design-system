@@ -4,17 +4,17 @@ export default defineConfig({
   source: {
     tsconfigPath: './tsconfig.build.json',
     entry: {
-      index: ['./src/**'],
+      main: './src/main.ts',
     },
   },
   lib: [
     {
-      bundle: false,
-      dts: true,
       format: 'esm',
+      bundle: true,
+      dts: false,
     },
   ],
   output: {
-    target: 'web',
+    target: 'node',
   },
 });
