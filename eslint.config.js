@@ -1,10 +1,8 @@
 import js from '@eslint/js';
 import importPlugin from 'eslint-plugin-import';
 import eslintPrettierRecommended from 'eslint-plugin-prettier/recommended';
-// eslint-disable-next-line import/no-unresolved
 import { defineConfig } from 'eslint/config';
 import globals from 'globals';
-// eslint-disable-next-line import/no-unresolved
 import tsEslint from 'typescript-eslint';
 
 export default defineConfig([
@@ -18,6 +16,14 @@ export default defineConfig([
   importPlugin.flatConfigs.recommended,
   eslintPrettierRecommended,
   {
+    settings: {
+      'import/resolver': {
+        typescript: true,
+        node: {
+          extensions: ['.js', '.ts'],
+        },
+      },
+    },
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',

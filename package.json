@@ -19,6 +19,8 @@
   "scripts": {
     "start": "rslib build --watch",
     "build": "rslib build",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "lint": "node scripts/lint.js",
     "lint:eslint": "eslint \"{scripts,src}/**/*.{js,jsx,mjs,ts,tsx}\"",
     "lint:eslint:fix": "eslint \"{scripts,src}/**/*.{js,jsx,mjs,ts,tsx}\" --fix",
@@ -43,6 +45,7 @@
     "@eslint/js": "^9.25.1",
     "@rslib/core": "^0.6.7",
     "@types/node": "^22.14.1",
+    "@vitest/coverage-v8": "^3.1.2",
     "concurrently": "^9.1.2",
     "eslint": "^9.25.1",
     "eslint-config-prettier": "^10.1.2",
@@ -55,7 +58,10 @@
     "prettier": "^3.5.3",
     "tsc-files": "^1.1.4",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.31.0"
+    "typescript-eslint": "^8.31.0",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.1.2",
+    "vitest-sonar-reporter": "^2.0.0"
   },
   "lint-staged": {
     "{package,package-lock}.json": "npm run package:check",
