@@ -1,14 +1,11 @@
-import { select } from '@clack/prompts';
+import { getPromptArgs } from '@/getPromptArgs';
+import { intro } from '@clack/prompts';
 
 export const main = async () => {
-  const designSystemSelect = await select({
-    message: 'Which design system do you want to use?',
-    options: [
-      { value: 'slash', label: 'Slash' },
-      { value: 'apollo', label: 'Apollo' },
-      { value: 'lf', label: 'Look and Feel' },
-    ],
-  });
+  intro('Create React App With Axa Design System');
 
-  console.info(`You selected: ${designSystemSelect.toString()}`);
+  const { projectName, designSystem } = await getPromptArgs();
+
+  console.info(`You projectName: ${projectName}`);
+  console.info(`You designSystem: ${designSystem}`);
 };
