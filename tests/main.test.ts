@@ -1,20 +1,23 @@
-import { select } from '@clack/prompts';
+import minimist from 'minimist';
 import { describe, expect, it, type Mock, vi } from 'vitest';
 import { main } from '../src/main';
 
-vi.mock('@clack/prompts', () => ({
-  select: vi.fn(),
+vi.mock('minimist', () => ({
+  default: vi.fn(),
 }));
 
 describe('main.ts', () => {
-  it('should log the selected design system', async () => {
+  it('should log the project name and design system', async () => {
+    (minimist as Mock).mockReturnValueOnce({
+      'project-name': 'my-project',
+      'design-system': 'apollo',
+    });
+
     const consoleSpy = vi.spyOn(console, 'info').mockImplementation(() => {});
-    (select as Mock).mockResolvedValue('apollo');
 
     await main();
 
-    expect(consoleSpy).toHaveBeenCalledWith('You selected: apollo');
-
-    consoleSpy.mockRestore();
+    expect(consoleSpy).toHaveBeenCalledWith('You projectName: my-project');
+    expect(consoleSpy).toHaveBeenCalledWith('You designSystem: apollo');
   });
 });
