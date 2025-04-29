@@ -34,3 +34,5 @@ dist/
 
 ## msw
 public/mockServiceWorker.js
+
+/template/package-lock.json
