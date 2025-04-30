@@ -1,16 +1,9 @@
-import { installPackages } from '@/installPackages';
-import { runCommand } from '@/runCommand';
+import { runCommand } from '@/helper/runCommand';
+import { installPackages } from '@/step/installPackages';
 import { describe, expect, it, type Mock, vi } from 'vitest';
 
-vi.mock('../src/runCommand', () => ({
+vi.mock('@/helper/runCommand', () => ({
   runCommand: vi.fn(),
-}));
-
-vi.mock('@clack/prompts', () => ({
-  spinner: vi.fn().mockImplementation(() => ({
-    start: vi.fn(),
-    stop: vi.fn(),
-  })),
 }));
 
 describe('installPackages', () => {

@@ -1,25 +1,7 @@
-import { getPromptArgs } from '@/getPromptArgs';
+import { getPromptArgs } from '@/step/getPromptArgs';
 import * as prompts from '@clack/prompts';
 import minimist from 'minimist';
 import { describe, expect, it, type Mock, vi } from 'vitest';
-
-vi.mock('@clack/prompts', async importOriginal => {
-  const original = (await importOriginal()) as typeof prompts;
-  return {
-    ...original,
-    text: vi.fn(),
-    select: vi.fn(),
-    log: {
-      error: vi.fn(),
-      message: vi.fn(),
-    },
-    outro: vi.fn(),
-  };
-});
-
-vi.mock('minimist', () => ({
-  default: vi.fn(),
-}));
 
 describe('getPromptArgs', () => {
   vi.spyOn(process, 'exit').mockImplementation(existCode => {

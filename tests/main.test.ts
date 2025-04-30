@@ -1,33 +1,13 @@
+import { runCommand } from '@/helper/runCommand';
 import { main } from '@/main';
-import { runCommand } from '@/runCommand';
-import * as prompts from '@clack/prompts';
 import { existsSync, rmSync } from 'fs';
 import minimist from 'minimist';
 import { resolve } from 'path';
 import { afterEach, describe, expect, it, type Mock, vi } from 'vitest';
 
-vi.mock('../src/runCommand', () => ({
+vi.mock('@/helper/runCommand', () => ({
   runCommand: vi.fn(),
 }));
-
-vi.mock('minimist', () => ({
-  default: vi.fn(),
-}));
-
-vi.mock('@clack/prompts', async importOriginal => {
-  const original = (await importOriginal()) as typeof prompts;
-  return {
-    ...original,
-    intro: vi.fn(),
-    log: {
-      info: vi.fn(),
-    },
-    spinner: vi.fn().mockImplementation(() => ({
-      start: vi.fn(),
-      stop: vi.fn(),
-    })),
-  };
-});
 
 describe('main.ts', () => {
   const testDir = 'test-main';

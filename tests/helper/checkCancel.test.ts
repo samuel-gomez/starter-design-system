@@ -1,11 +1,6 @@
-import { checkCancel } from '@/checkCancel';
+import { checkCancel } from '@/helper/checkCancel';
 import { isCancel } from '@clack/prompts';
 import { describe, expect, it, type Mock, vi } from 'vitest';
-
-vi.mock('@clack/prompts', () => ({
-  cancel: vi.fn(),
-  isCancel: vi.fn(),
-}));
 
 describe('checkCancel', () => {
   vi.spyOn(process, 'exit').mockImplementation(() => {
