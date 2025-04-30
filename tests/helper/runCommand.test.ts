@@ -1,3 +1,4 @@
+import { endProcess } from '@/helper/endProcess';
 import { runCommand } from '@/helper/runCommand';
 import * as prompts from '@clack/prompts';
 import { exec } from 'child_process';
@@ -5,6 +6,12 @@ import { describe, expect, it, type Mock, vi } from 'vitest';
 
 vi.mock('child_process', () => ({
   exec: vi.fn(),
+}));
+
+vi.mock('@/helper/endProcess', () => ({
+  endProcess: vi.fn().mockImplementation(() => {
+    throw new Error('End process called');
+  }),
 }));
 
 describe('runCommand', () => {
@@ -19,17 +26,14 @@ describe('runCommand', () => {
   });
 
   it('should handle errors and exit the process', async () => {
-    const mockExit = vi.spyOn(process, 'exit').mockImplementation(() => {
-      throw new Error('process.exit called');
-    });
     (exec as unknown as Mock).mockImplementation((_, callback) => {
       callback(new Error('Command failed'));
     });
     (prompts.log.error as Mock).mockImplementation(() => {});
 
-    await expect(runCommand('invalid-command')).rejects.toThrow('process.exit called');
+    await expect(runCommand('invalid-command')).rejects.toThrow('End process called');
     expect(exec).toHaveBeenCalledWith('invalid-command', expect.any(Function));
     expect(prompts.log.error).toHaveBeenCalledWith('Failed to execute invalid-command');
-    expect(mockExit).toHaveBeenCalledWith(-1);
+    expect(endProcess).toHaveBeenCalledWith(true);
   });
 });

@@ -1,3 +1,4 @@
+import { endProcess } from '@/helper/endProcess';
 import { log } from '@clack/prompts';
 import { existsSync, mkdirSync } from 'fs';
 import { resolve } from 'path';
@@ -9,7 +10,7 @@ export const initRepository = (projectName: string) => {
     log.error(`The directory ${projectName} already exists.
 Either try using a new directory name, or remove the files listed above and try again.
 `);
-    process.exit(1);
+    endProcess(true);
   }
 
   log.info(`Creating a new React App in ${projectName}`);
