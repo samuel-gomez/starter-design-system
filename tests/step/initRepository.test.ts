@@ -4,13 +4,15 @@ import { existsSync, mkdirSync, rmSync } from 'fs';
 import { resolve } from 'path';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
+vi.mock('@/helper/endProcess', () => ({
+  endProcess: vi.fn().mockImplementation(() => {
+    throw new Error('End process called');
+  }),
+}));
+
 describe('initRepository', () => {
   const testDir = 'test-initRepository';
   const testPath = resolve(process.cwd(), testDir);
-
-  vi.spyOn(process, 'exit').mockImplementation(existCode => {
-    throw new Error(`process.exit called with code: ${existCode}`);
-  });
 
   afterEach(() => {
     if (existsSync(testPath)) {
@@ -29,7 +31,7 @@ describe('initRepository', () => {
   it('should throw an error if the directory already exists', () => {
     mkdirSync(testDir, { recursive: true });
 
-    expect(() => initRepository(testDir)).toThrow('process.exit called with code: 1');
+    expect(() => initRepository(testDir)).toThrow('End process called');
     expect(prompts.log.error).toHaveBeenCalledWith(`The directory ${testDir} already exists.
 Either try using a new directory name, or remove the files listed above and try again.
 `);
