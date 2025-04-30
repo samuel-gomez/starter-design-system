@@ -10,7 +10,7 @@ vi.mock('child_process', () => ({
 describe('runCommand', () => {
   it('should execute the command successfully', async () => {
     (exec as unknown as Mock).mockImplementation((_, callback) => {
-      callback(null, { stdout: 'Command executed successfully' });
+      callback(null);
     });
 
     await runCommand('echo "Hello World"');
@@ -23,7 +23,7 @@ describe('runCommand', () => {
       throw new Error('process.exit called');
     });
     (exec as unknown as Mock).mockImplementation((_, callback) => {
-      callback(null, { stderr: 'Command failed' });
+      callback(new Error('Command failed'));
     });
     (prompts.log.error as Mock).mockImplementation(() => {});
 
