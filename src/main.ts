@@ -4,9 +4,10 @@ import { initRepository } from '@/step/initRepository';
 import { installPackages } from '@/step/installPackages';
 import { prepareRepository } from '@/step/prepareRepository';
 import { intro, log, note, outro } from '@clack/prompts';
+import pc from 'picocolors';
 
 export const main = async () => {
-  intro('Create React App With Axa Design System');
+  intro(`Create React App With ${pc.blue('AXA Design System')}`);
 
   const { projectName, designSystem, enableGit } = await getPromptArgs();
 
@@ -20,14 +21,17 @@ export const main = async () => {
     await initGitRepository(projectPath);
   }
 
-  log.success(`Success \\o/ Created ${projectName} at ${projectPath}`);
-  note(`Inside that directory, you can run several commands:
- npm start    Starts the development server.
- npm build    Bundles the app into static files for production.
+  log.success(`${pc.yellow('Success \\o/')} Created ${pc.green(projectName)} at ${pc.green(projectPath)}`);
+  note(
+    `Inside that directory, you can run several commands:
+ ${pc.cyan('npm start')}    Starts the development server.
+ ${pc.cyan('npm build')}    Bundles the app into static files for production.
 
 We suggest that you begin by typing:
- cd ${projectName}
- npm start`);
+ ${pc.cyan('cd')} ${projectName}
+ ${pc.cyan('npm start')}`,
+    'What next?',
+  );
 
   outro('Happy hacking!');
 };
