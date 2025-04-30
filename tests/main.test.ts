@@ -4,6 +4,11 @@ import minimist from 'minimist';
 import { resolve } from 'path';
 import { afterEach, describe, expect, it, type Mock, vi } from 'vitest';
 import { main } from '../src/main';
+import { runCommand } from '../src/runCommand';
+
+vi.mock('../src/runCommand', () => ({
+  runCommand: vi.fn(),
+}));
 
 vi.mock('minimist', () => ({
   default: vi.fn(),
@@ -17,11 +22,15 @@ vi.mock('@clack/prompts', async importOriginal => {
     log: {
       info: vi.fn(),
     },
+    spinner: vi.fn().mockImplementation(() => ({
+      start: vi.fn(),
+      stop: vi.fn(),
+    })),
   };
 });
 
 describe('main.ts', () => {
-  const testDir = 'my-project';
+  const testDir = 'test-main';
   const testPath = resolve(process.cwd(), testDir);
 
   afterEach(() => {
@@ -42,5 +51,6 @@ describe('main.ts', () => {
 
     expect(consoleSpy).toHaveBeenCalledWith(`You projectName: ${testDir}`);
     expect(consoleSpy).toHaveBeenCalledWith('You designSystem: apollo');
+    expect(runCommand).toHaveBeenCalledTimes(2);
   });
 });
