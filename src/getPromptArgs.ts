@@ -3,9 +3,6 @@ import { log, outro, select, text } from '@clack/prompts';
 import minimist from 'minimist';
 import packageJson from '../package.json';
 
-type ProjectName = string;
-type DesignSystem = 'apollo' | 'slash' | 'look&feel';
-
 const logHelpMessage = () => {
   log.message(`Usage: create-starter-design-system [options]
 

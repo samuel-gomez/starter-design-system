@@ -16,7 +16,7 @@ vi.mock('@clack/prompts', async importOriginal => {
 });
 
 describe('initRepository', () => {
-  const testDir = 'test-project';
+  const testDir = 'test-initRepository';
   const testPath = resolve(process.cwd(), testDir);
 
   vi.spyOn(process, 'exit').mockImplementation(existCode => {
@@ -25,7 +25,7 @@ describe('initRepository', () => {
 
   afterEach(() => {
     if (existsSync(testPath)) {
-      rmSync(testPath, { recursive: true });
+      rmSync(testPath, { recursive: true, force: true });
     }
   });
 
