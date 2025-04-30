@@ -1,6 +1,8 @@
 import { checkCancel } from '@/helper/checkCancel';
-import { log, outro, select, text } from '@clack/prompts';
+import { endProcess } from '@/helper/endProcess';
+import { confirm, log, outro, select, text } from '@clack/prompts';
 import minimist from 'minimist';
+import * as process from 'node:process';
 import packageJson from '../../package.json';
 
 const logHelpMessage = () => {
@@ -9,6 +11,7 @@ const logHelpMessage = () => {
   Options:
     -p, --project-name <name>   Name of the project
     -d, --design-system <name>  Design system to use, can be 'apollo', 'slash', or 'look&feel'
+    -g, --use-git               Initialize a git repository
     -h, --help                  Show help
     -v, --version               Show version
   
@@ -17,12 +20,12 @@ const logHelpMessage = () => {
   npx @axa.fr/create-starter-design-system -p my-project -d apollo`);
 
   outro('See you soon!');
-  process.exit(0);
+  endProcess();
 };
 
 const logVersionMessage = () => {
   outro(`Version: ${packageJson.version}`);
-  process.exit(0);
+  endProcess();
 };
 
 const validateProjectName = (value: ProjectName | unknown) => {
@@ -49,7 +52,7 @@ const validateDesignSystem = (value: DesignSystem) => {
 
 export const getPromptArgs = async () => {
   const argv = minimist(process.argv.slice(2), {
-    alias: { p: 'project-name', d: 'design-system', h: 'help', v: 'version' },
+    alias: { p: 'project-name', d: 'design-system', g: 'use-git', h: 'help', v: 'version' },
   });
 
   if (argv.help) {
@@ -65,7 +68,7 @@ export const getPromptArgs = async () => {
     if (projectNameIsValid !== '') {
       log.error(projectNameIsValid);
       outro('Please check and try again.');
-      process.exit(1);
+      endProcess(true);
     }
   }
 
@@ -74,7 +77,7 @@ export const getPromptArgs = async () => {
     if (designSystemIsValid !== '') {
       log.error(designSystemIsValid);
       outro('Please check and try again.');
-      process.exit(1);
+      endProcess(true);
     }
   }
 
@@ -101,8 +104,19 @@ export const getPromptArgs = async () => {
       }),
     ).toString() as DesignSystem);
 
+  const enableGit = Boolean(
+    argv['use-git'] ??
+      checkCancel(
+        await confirm({
+          message: 'Do you want to initialize a git repository?',
+          initialValue: true,
+        }),
+      ),
+  );
+
   return {
     projectName,
     designSystem,
+    enableGit,
   };
 };
