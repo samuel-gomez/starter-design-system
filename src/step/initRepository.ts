@@ -3,7 +3,7 @@ import { log } from '@clack/prompts';
 import { existsSync, mkdirSync } from 'fs';
 import { resolve } from 'path';
 
-export const initRepository = (projectName: string) => {
+export const initRepository = (projectName: ProjectName) => {
   const projectPath = resolve(process.cwd(), projectName);
 
   if (existsSync(projectPath)) {
