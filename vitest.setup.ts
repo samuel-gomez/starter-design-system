@@ -10,6 +10,7 @@ beforeEach(() => {
     isCancel: vi.fn(),
     text: vi.fn(),
     select: vi.fn(),
+    confirm: vi.fn(),
     intro: vi.fn(),
     outro: vi.fn(),
     log: {
