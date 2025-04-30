@@ -13,10 +13,12 @@ beforeEach(() => {
     confirm: vi.fn(),
     intro: vi.fn(),
     outro: vi.fn(),
+    note: vi.fn(),
     log: {
       error: vi.fn(),
       message: vi.fn(),
       info: vi.fn(),
+      success: vi.fn(),
     },
     spinner: vi.fn().mockImplementation(() => ({
       start: vi.fn(),
