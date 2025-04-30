@@ -31,8 +31,8 @@ describe('main.ts', () => {
 
     expect(runCommand).toHaveBeenCalledTimes(2);
     expect(runCommand).toHaveBeenCalledWith(expect.stringContaining('npm install'));
-    expect(note).toHaveBeenCalledWith(expect.stringContaining('npm start'));
-    expect(note).toHaveBeenCalledWith(expect.stringContaining('npm build'));
+    expect(note).toHaveBeenCalledWith(expect.stringContaining('npm start'), 'What next?');
+    expect(note).toHaveBeenCalledWith(expect.stringContaining('npm build'), 'What next?');
     expect(outro).toHaveBeenCalledWith(expect.stringContaining('Happy hacking!'));
   });
 
