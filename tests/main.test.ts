@@ -1,5 +1,6 @@
 import { runCommand } from '@/helper/runCommand';
 import { main } from '@/main';
+import { note, outro } from '@clack/prompts';
 import { existsSync, rmSync } from 'fs';
 import minimist from 'minimist';
 import { resolve } from 'path';
@@ -19,18 +20,34 @@ describe('main.ts', () => {
     }
   });
 
-  it('should log the project name and design system', async () => {
+  it('should log project details and skip git initialization when enableGit is false', async () => {
     (minimist as Mock).mockReturnValueOnce({
       'project-name': testDir,
       'design-system': 'apollo',
+      'use-git': false,
     });
-
-    const consoleSpy = vi.spyOn(console, 'info').mockImplementation(() => {});
 
     await main();
 
-    expect(consoleSpy).toHaveBeenCalledWith(`You projectName: ${testDir}`);
-    expect(consoleSpy).toHaveBeenCalledWith('You designSystem: apollo');
     expect(runCommand).toHaveBeenCalledTimes(2);
+    expect(runCommand).toHaveBeenCalledWith(expect.stringContaining('npm install'));
+    expect(note).toHaveBeenCalledWith(expect.stringContaining('npm start'));
+    expect(note).toHaveBeenCalledWith(expect.stringContaining('npm build'));
+    expect(outro).toHaveBeenCalledWith(expect.stringContaining('Happy hacking!'));
+  });
+
+  it('should log project details and initialize git repository when enableGit is true', async () => {
+    (minimist as Mock).mockReturnValueOnce({
+      'project-name': testDir,
+      'design-system': 'apollo',
+      'use-git': true,
+    });
+
+    await main();
+
+    expect(runCommand).toHaveBeenCalledTimes(5);
+    expect(runCommand).toHaveBeenCalledWith(expect.stringContaining('npm install'));
+    expect(runCommand).toHaveBeenCalledWith(expect.stringContaining('git init'));
+    expect(runCommand).toHaveBeenCalledWith(expect.stringContaining('git commit'));
   });
 });
