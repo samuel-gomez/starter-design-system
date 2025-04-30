@@ -1,5 +1,7 @@
 import { beforeEach, vi } from 'vitest';
 
+process.env.NO_COLOR = 'true';
+
 beforeEach(() => {
   vi.mock('url', () => ({
     fileURLToPath: vi.fn().mockImplementation(() => `${process.cwd()}/dist/main.js`),

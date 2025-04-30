@@ -3,28 +3,29 @@ import { endProcess } from '@/helper/endProcess';
 import { confirm, log, outro, select, text } from '@clack/prompts';
 import minimist from 'minimist';
 import * as process from 'node:process';
+import pc from 'picocolors';
 import packageJson from '../../package.json';
 
 const logHelpMessage = () => {
-  log.message(`Usage: create-starter-design-system [options]
+  log.message(`Usage: ${pc.green('create-starter-design-system')} [options]
 
   Options:
-    -p, --project-name <name>   Name of the project
-    -d, --design-system <name>  Design system to use, can be 'apollo', 'slash', or 'look&feel'
+    -p, --project-name <${pc.red('name')}>   Name of the project
+    -d, --design-system <${pc.red('name')}>  Design system to use, can be 'apollo', 'slash', or 'look&feel'
     -g, --use-git               Initialize a git repository
     -h, --help                  Show help
     -v, --version               Show version
   
   Examples:
-  npm create @axa.fr/starter-design-system -- -p my-project -d apollo
-  npx @axa.fr/create-starter-design-system -p my-project -d apollo`);
+  ${pc.yellow('npm create @axa.fr/starter-design-system -- -p my-project -d apollo')}
+  ${pc.yellow('npx @axa.fr/create-starter-design-system -p my-project -d apollo')}`);
 
   outro('See you soon!');
   endProcess();
 };
 
 const logVersionMessage = () => {
-  outro(`Version: ${packageJson.version}`);
+  outro(`Version: ${pc.green(packageJson.version)}`);
   endProcess();
 };
 

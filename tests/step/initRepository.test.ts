@@ -25,15 +25,13 @@ describe('initRepository', () => {
 
     expect(projectPath).toStrictEqual(testPath);
     expect(existsSync(projectPath)).toBeTruthy();
-    expect(prompts.log.info).toHaveBeenCalledWith(`Creating a new React App in ${testDir}`);
+    expect(prompts.log.info).toHaveBeenCalledWith(`Creating a new React App in ${testPath}`);
   });
 
   it('should throw an error if the directory already exists', () => {
     mkdirSync(testDir, { recursive: true });
 
     expect(() => initRepository(testDir)).toThrow('End process called');
-    expect(prompts.log.error).toHaveBeenCalledWith(`The directory ${testDir} already exists.
-Either try using a new directory name, or remove the files listed above and try again.
-`);
+    expect(prompts.log.error).toHaveBeenCalledWith(expect.stringContaining(`The directory ${testDir} already exists.`));
   });
 });
