@@ -1,7 +1,7 @@
+import { getPromptArgs } from '@/getPromptArgs';
 import * as prompts from '@clack/prompts';
 import minimist from 'minimist';
 import { describe, expect, it, type Mock, vi } from 'vitest';
-import { getPromptArgs } from '../src/getPromptArgs';
 
 vi.mock('@clack/prompts', async importOriginal => {
   const original = (await importOriginal()) as typeof prompts;

@@ -1,7 +1,7 @@
+import { prepareRepository } from '@/prepareRepository';
 import { existsSync, readFileSync, rmSync } from 'fs';
 import { resolve } from 'path';
 import { afterEach, describe, expect, it } from 'vitest';
-import { prepareRepository } from '../src/prepareRepository';
 
 describe('prepareRepository', () => {
   const projectName = 'test-prepareRepository';

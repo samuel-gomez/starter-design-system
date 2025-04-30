@@ -1,8 +1,8 @@
+import { initRepository } from '@/initRepository';
 import * as prompts from '@clack/prompts';
 import { existsSync, mkdirSync, rmSync } from 'fs';
 import { resolve } from 'path';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { initRepository } from '../src/initRepository';
 
 vi.mock('@clack/prompts', async importOriginal => {
   const original = (await importOriginal()) as typeof prompts;
