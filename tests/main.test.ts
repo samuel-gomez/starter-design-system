@@ -1,10 +1,10 @@
+import { main } from '@/main';
+import { runCommand } from '@/runCommand';
 import * as prompts from '@clack/prompts';
 import { existsSync, rmSync } from 'fs';
 import minimist from 'minimist';
 import { resolve } from 'path';
 import { afterEach, describe, expect, it, type Mock, vi } from 'vitest';
-import { main } from '../src/main';
-import { runCommand } from '../src/runCommand';
 
 vi.mock('../src/runCommand', () => ({
   runCommand: vi.fn(),

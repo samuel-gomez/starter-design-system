@@ -1,6 +1,6 @@
+import { checkCancel } from '@/checkCancel';
 import { isCancel } from '@clack/prompts';
 import { describe, expect, it, type Mock, vi } from 'vitest';
-import { checkCancel } from '../src/checkCancel';
 
 vi.mock('@clack/prompts', () => ({
   cancel: vi.fn(),
