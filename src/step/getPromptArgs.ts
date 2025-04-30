@@ -1,7 +1,7 @@
-import { checkCancel } from '@/checkCancel';
+import { checkCancel } from '@/helper/checkCancel';
 import { log, outro, select, text } from '@clack/prompts';
 import minimist from 'minimist';
-import packageJson from '../package.json';
+import packageJson from '../../package.json';
 
 const logHelpMessage = () => {
   log.message(`Usage: create-starter-design-system [options]

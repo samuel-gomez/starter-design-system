@@ -1,7 +1,7 @@
-import { getPromptArgs } from '@/getPromptArgs';
-import { initRepository } from '@/initRepository';
-import { installPackages } from '@/installPackages';
-import { prepareRepository } from '@/prepareRepository';
+import { getPromptArgs } from '@/step/getPromptArgs';
+import { initRepository } from '@/step/initRepository';
+import { installPackages } from '@/step/installPackages';
+import { prepareRepository } from '@/step/prepareRepository';
 import { intro } from '@clack/prompts';
 
 export const main = async () => {

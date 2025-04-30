@@ -1,4 +1,4 @@
-import { runCommand } from '@/runCommand';
+import { runCommand } from '@/helper/runCommand';
 import { spinner } from '@clack/prompts';
 
 type InstallPackagesArgs = {

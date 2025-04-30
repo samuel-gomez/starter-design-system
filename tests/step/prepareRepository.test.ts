@@ -1,4 +1,4 @@
-import { prepareRepository } from '@/prepareRepository';
+import { prepareRepository } from '@/step/prepareRepository';
 import { existsSync, readFileSync, rmSync } from 'fs';
 import { resolve } from 'path';
 import { afterEach, describe, expect, it } from 'vitest';
