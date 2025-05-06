@@ -1,8 +1,9 @@
+import { endProcess } from '@/helper/endProcess';
 import { cancel, isCancel } from '@clack/prompts';
 
 const cancelAndExit = () => {
   cancel('Operation cancelled.');
-  process.exit(0);
+  endProcess();
 };
 
 export const checkCancel = <V>(value: V): V => {

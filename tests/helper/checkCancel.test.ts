@@ -2,15 +2,17 @@ import { checkCancel } from '@/helper/checkCancel';
 import { isCancel } from '@clack/prompts';
 import { describe, expect, it, type Mock, vi } from 'vitest';
 
-describe('checkCancel', () => {
-  vi.spyOn(process, 'exit').mockImplementation(() => {
-    throw new Error('process.exit called');
-  });
+vi.mock('@/helper/endProcess', () => ({
+  endProcess: vi.fn().mockImplementation(() => {
+    throw new Error('End process called');
+  }),
+}));
 
+describe('checkCancel', () => {
   it('should call cancelAndExit if the value is cancelled', () => {
     (isCancel as unknown as Mock).mockReturnValue(true);
 
-    expect(() => checkCancel('cancelledValue')).toThrow('process.exit called');
+    expect(() => checkCancel('cancelledValue')).toThrow('End process called');
     expect(isCancel).toHaveBeenCalledWith('cancelledValue');
   });
 

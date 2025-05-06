@@ -1,3 +1,4 @@
+import { endProcess } from '@/helper/endProcess';
 import { log } from '@clack/prompts';
 import { exec } from 'child_process';
 import { promisify } from 'util';
@@ -9,6 +10,6 @@ export const runCommand = async (command: string) => {
     await execAsync(command);
   } catch {
     log.error(`Failed to execute ${command}`);
-    process.exit(-1);
+    endProcess(true);
   }
 };

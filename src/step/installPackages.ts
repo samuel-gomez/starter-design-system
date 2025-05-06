@@ -1,5 +1,6 @@
 import { runCommand } from '@/helper/runCommand';
 import { spinner } from '@clack/prompts';
+import pc from 'picocolors';
 
 type InstallPackagesArgs = {
   projectPath: string;
@@ -33,11 +34,11 @@ const installDesignSystem = async (projectPath: string, designSystem: DesignSyst
 
 export const installPackages = async ({ projectPath, designSystem }: InstallPackagesArgs) => {
   const spinnerInstance = spinner();
-  spinnerInstance.start('Installing packages. This might take a couple of minutes.');
+  spinnerInstance.start(`${pc.green('Installing packages.')} This might take a couple of minutes.`);
 
   await runCommand(`cd ${projectPath} && npm install`);
 
   await installDesignSystem(projectPath, designSystem);
 
-  spinnerInstance.stop('Packages installed successfully.');
+  spinnerInstance.stop(pc.green('Packages installed successfully.'));
 };
