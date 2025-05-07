@@ -3,6 +3,7 @@ import { initRepository } from '@/step/initRepository';
 import { installPackages } from '@/step/installPackages';
 import { prepareRepository } from '@/step/prepareRepository';
 import { intro } from '@clack/prompts';
+import { prepareHusky } from './step/prepareHusky';
 
 export const main = async () => {
   intro('Create React App With Axa Design System');
@@ -14,6 +15,8 @@ export const main = async () => {
   prepareRepository({ projectPath, projectName });
 
   await installPackages({ projectPath, designSystem });
+
+  await prepareHusky(projectPath);
 
   console.info(`You projectName: ${projectName}`);
   console.info(`You designSystem: ${designSystem}`);

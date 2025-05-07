@@ -8,6 +8,7 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [viteTsconfigPaths()],
     test: {
+      globals: true,
       setupFiles: 'vitest.setup.ts',
       clearMocks: true,
       reporters: ['default', 'junit', 'vitest-sonar-reporter'],

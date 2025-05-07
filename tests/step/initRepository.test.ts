@@ -2,7 +2,6 @@ import { initRepository } from '@/step/initRepository';
 import * as prompts from '@clack/prompts';
 import { existsSync, mkdirSync, rmSync } from 'fs';
 import { resolve } from 'path';
-import { afterEach, describe, expect, it, vi } from 'vitest';
 
 describe('initRepository', () => {
   const testDir = 'test-initRepository';

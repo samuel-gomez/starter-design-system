@@ -3,7 +3,7 @@ import { main } from '@/main';
 import { existsSync, rmSync } from 'fs';
 import minimist from 'minimist';
 import { resolve } from 'path';
-import { afterEach, describe, expect, it, type Mock, vi } from 'vitest';
+import type { Mock } from 'vitest';
 
 vi.mock('@/helper/runCommand', () => ({
   runCommand: vi.fn(),
@@ -31,6 +31,7 @@ describe('main.ts', () => {
 
     expect(consoleSpy).toHaveBeenCalledWith(`You projectName: ${testDir}`);
     expect(consoleSpy).toHaveBeenCalledWith('You designSystem: apollo');
-    expect(runCommand).toHaveBeenCalledTimes(2);
+    expect(runCommand).toHaveBeenCalledTimes(3);
+    expect(runCommand).toHaveBeenCalledWith(expect.stringContaining('npm run prepare'));
   });
 });

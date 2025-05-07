@@ -1,6 +1,6 @@
 import { runCommand } from '@/helper/runCommand';
 import { installPackages } from '@/step/installPackages';
-import { describe, expect, it, type Mock, vi } from 'vitest';
+import type { Mock } from 'vitest';
 
 vi.mock('@/helper/runCommand', () => ({
   runCommand: vi.fn(),
