@@ -5,6 +5,7 @@ import { installPackages } from '@/step/installPackages';
 import { prepareRepository } from '@/step/prepareRepository';
 import { intro, log, note, outro } from '@clack/prompts';
 import pc from 'picocolors';
+import { prepareHusky } from './step/prepareHusky';
 
 export const main = async () => {
   intro(`Create React App With ${pc.blue('AXA Design System')}`);
@@ -17,6 +18,7 @@ export const main = async () => {
 
   if (enableGit) {
     await gitRepository(projectPath);
+    await prepareHusky(projectPath);
   }
 
   await installPackages({ projectPath, designSystem });
