@@ -31,6 +31,7 @@ describe('main.ts', () => {
 
     expect(consoleSpy).toHaveBeenCalledWith(`You projectName: ${testDir}`);
     expect(consoleSpy).toHaveBeenCalledWith('You designSystem: apollo');
-    expect(runCommand).toHaveBeenCalledTimes(2);
+    expect(runCommand).toHaveBeenCalledTimes(3);
+    expect(runCommand).toHaveBeenCalledWith(expect.stringContaining('npm run prepare'));
   });
 });
