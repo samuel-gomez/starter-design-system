@@ -1,6 +1,5 @@
 import { runCommand } from '@/helper/runCommand';
 import { prepareHusky } from '@/step/prepareHusky';
-import { describe, expect, it, vi } from 'vitest';
 
 vi.mock('@/helper/runCommand', () => ({
   runCommand: vi.fn(),

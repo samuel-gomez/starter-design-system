@@ -1,7 +1,7 @@
 import { runCommand } from '@/helper/runCommand';
 import * as prompts from '@clack/prompts';
 import { exec } from 'child_process';
-import { describe, expect, it, type Mock, vi } from 'vitest';
+import type { Mock } from 'vitest';
 
 vi.mock('child_process', () => ({
   exec: vi.fn(),

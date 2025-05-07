@@ -1,7 +1,7 @@
 import { getPromptArgs } from '@/step/getPromptArgs';
 import * as prompts from '@clack/prompts';
 import minimist from 'minimist';
-import { describe, expect, it, type Mock, vi } from 'vitest';
+import type { Mock } from 'vitest';
 
 describe('getPromptArgs', () => {
   vi.spyOn(process, 'exit').mockImplementation(existCode => {
