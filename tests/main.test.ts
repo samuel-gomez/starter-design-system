@@ -1,7 +1,7 @@
 import { runCommand } from '@/helper/runCommand';
 import { main } from '@/main';
 import { note, outro } from '@clack/prompts';
-import { existsSync, rmSync } from 'fs';
+import { existsSync, readFileSync, rmSync } from 'fs';
 import minimist from 'minimist';
 import { resolve } from 'path';
 import { afterEach, describe, expect, it, type Mock, vi } from 'vitest';
@@ -49,5 +49,32 @@ describe('main.ts', () => {
     expect(runCommand).toHaveBeenCalledWith(expect.stringContaining('npm install'));
     expect(runCommand).toHaveBeenCalledWith(expect.stringContaining('git init'));
     expect(runCommand).toHaveBeenCalledWith(expect.stringContaining('git commit'));
+  });
+
+  it('should add prepare script in package.json when use-git is true', async () => {
+    (minimist as Mock).mockReturnValueOnce({
+      'project-name': testDir,
+      'design-system': 'apollo',
+      'use-git': true,
+    });
+
+    await main();
+
+    const pkg = JSON.parse(readFileSync(resolve(testPath, 'package.json'), { encoding: 'utf-8' }));
+    expect(pkg.scripts.prepare).toBe('husky');
+  });
+
+  it('should NOT add prepare script in package.json when use-git is false', async () => {
+    (minimist as Mock).mockReturnValueOnce({
+      'project-name': testDir,
+      'design-system': 'apollo',
+      'use-git': false,
+    });
+
+    await main();
+
+    const pkg = JSON.parse(readFileSync(resolve(testPath, 'package.json'), { encoding: 'utf-8' }));
+
+    expect(pkg.scripts.prepare).toBeUndefined();
   });
 });
