@@ -17,8 +17,8 @@ const logHelpMessage = () => {
     -v, --version               Show version
   
   Examples:
-  ${pc.yellow('npm create @axa.fr/starter-design-system -- -p my-project -d apollo')}
-  ${pc.yellow('npx @axa.fr/create-starter-design-system -p my-project -d apollo')}`);
+  ${pc.yellow('npm create @axa-fr/starter-design-system -- -p my-project -d apollo')}
+  ${pc.yellow('npx @axa-fr/create-starter-design-system -p my-project -d apollo')}`);
 
   outro('See you soon!');
   endProcess();
