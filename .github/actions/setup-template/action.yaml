@@ -1,0 +1,14 @@
+name: 'setup-template'
+description: 'setup template'
+
+inputs:
+  run-command:
+    description: 'shell run command'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Shell run command
+      shell: bash
+      run: cd template && ${{ inputs.run-command }}

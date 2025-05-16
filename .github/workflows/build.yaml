@@ -28,6 +28,11 @@ jobs:
       - name: Install package
         run: npm ci
 
+      - name: Install Template
+        uses: ./.github/actions/setup-template
+        with:
+          run-command: npm install
+
   commitlint:
     if: github.event_name == 'pull_request'
     name: CommitLint
@@ -61,7 +66,12 @@ jobs:
         uses: ./.github/actions/setup-node
 
       - name: Run lint
-        run: npm run lint -- --max-processes 1
+        run: npm run lint
+
+      - name: Run lint Template
+        uses: ./.github/actions/setup-template
+        with:
+          run-command: npm run lint
 
   test:
     name: Test
@@ -121,3 +131,8 @@ jobs:
 
       - name: Run build
         run: npm run build
+
+      - name: Run build Template
+        uses: ./.github/actions/setup-template
+        with:
+          run-command: npm run build
