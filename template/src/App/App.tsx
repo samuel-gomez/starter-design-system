@@ -1,3 +1,5 @@
+import defaultClasses from './App.module.css';
+
 export const App = () => {
-  return <div>template-starter-design-system</div>;
+  return <div className={defaultClasses.root}>template-starter-design-system</div>;
 };
