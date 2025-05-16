@@ -41,6 +41,7 @@ export default defineConfig([
       ecmaVersion: 'latest',
       sourceType: 'module',
       parserOptions: {
+        project: './tsconfig.json',
         ecmaFeatures: {
           generators: false,
           objectLiteralDuplicateProperties: false,
