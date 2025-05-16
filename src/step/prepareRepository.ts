@@ -11,7 +11,11 @@ export const prepareRepository = ({ projectPath, projectName }: PrepareRepositor
   const templatePath = resolve(fileURLToPath(import.meta.url), '../..', 'template');
 
   // Copy the template files to the project path
-  cpSync(templatePath, projectPath, { recursive: true, dereference: true });
+  cpSync(templatePath, projectPath, {
+    recursive: true,
+    dereference: true,
+    filter: src => !src.includes('node_modules'),
+  });
 
   // Initialize the package.json file
   const repoPackageJson = JSON.parse(readFileSync(resolve(projectPath, 'package.json'), { encoding: 'utf-8' }));
