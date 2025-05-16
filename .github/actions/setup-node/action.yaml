@@ -17,4 +17,4 @@ runs:
       uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
       with:
         path: '**/node_modules'
-        key: npm-${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
+        key: npm-${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/template/package.json') }}
