@@ -24,6 +24,15 @@ describe('prepareRepository', () => {
     expect(existsSync(`${projectPath}/package.json`)).toBeTruthy();
   });
 
+  it('should copy template files and excluding node_modules directory', () => {
+    prepareRepository({
+      projectPath,
+      projectName,
+    });
+
+    expect(existsSync(`${projectPath}/node_modules`)).toBeFalsy();
+  });
+
   it('should initialize package.json with the correct project name', () => {
     prepareRepository({
       projectPath,
