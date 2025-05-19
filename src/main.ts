@@ -1,5 +1,5 @@
 import { getPromptArgs } from '@/step/getPromptArgs';
-import { initGitRepository } from '@/step/initGitRepository';
+import { gitCommitRepository, gitRepository } from '@/step/gitRepository';
 import { initRepository } from '@/step/initRepository';
 import { installPackages } from '@/step/installPackages';
 import { prepareRepository } from '@/step/prepareRepository';
@@ -15,10 +15,14 @@ export const main = async () => {
 
   prepareRepository({ projectPath, projectName });
 
+  if (enableGit) {
+    await gitRepository(projectPath);
+  }
+
   await installPackages({ projectPath, designSystem });
 
   if (enableGit) {
-    await initGitRepository(projectPath);
+    await gitCommitRepository(projectPath);
   }
 
   log.success(`${pc.yellow('Success \\o/')} Created ${pc.green(projectName)} at ${pc.green(projectPath)}`);
