@@ -33,6 +33,6 @@ dist/
 .env.production.local
 
 ## msw
-public/mockServiceWorker.js
+/template/public/mockServiceWorker.js
 
 /template/package-lock.json

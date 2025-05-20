@@ -24,3 +24,6 @@ build-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# msw
+public/mockServiceWorker.js
