@@ -3,9 +3,11 @@ import { describe, expect, it } from 'vitest';
 import { App } from '../App';
 
 describe('App Component', () => {
-  it('should renders the correct text', () => {
+  it('should render the BrowserRouter component', () => {
     render(<App />);
-    const textElement = screen.getByText(/template-starter-design-system/i);
-    expect(textElement).toBeInTheDocument();
+
+    expect(screen.getByRole('banner')).toBeInTheDocument();
+    expect(screen.getByRole('main')).toBeInTheDocument();
+    expect(screen.getByRole('contentinfo')).toBeInTheDocument();
   });
 });

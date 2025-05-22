@@ -1,0 +1,28 @@
+.root {
+  display: grid;
+  height: 100vh;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+  grid-template-rows: auto 1fr auto;
+
+  .header {
+    height: 48px;
+    padding-inline: 16px;
+    border-bottom: 1px solid black;
+    grid-area: header;
+  }
+
+  .main {
+    padding: 8px 16px;
+    grid-area: main;
+  }
+
+  .footer {
+    height: 72px;
+    padding-inline: 16px;
+    border-top: 1px solid black;
+    grid-area: footer;
+  }
+}
