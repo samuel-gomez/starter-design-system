@@ -1,5 +1,6 @@
-import defaultClasses from './App.module.css';
+import { BrowserRouter } from './Routing/BrowserRouter';
+import '../assets/css';
 
 export const App = () => {
-  return <div className={defaultClasses.root}>template-starter-design-system</div>;
+  return <BrowserRouter />;
 };
