@@ -1,24 +1,27 @@
 import { Link, NavLink, Outlet } from 'react-router';
 import { appRoutes } from '../../App/Routing/appRoutes';
+import { useDemoApi } from './hook/useDemoApi';
 
 export const Demo = () => {
-  const context = "Hey there! I'm the context, just hanging out on the demo page nothing too fancy.";
+  const { result, isLoading } = useDemoApi();
 
   return (
     <>
       <h1>Demo page</h1>
-      <nav>
-        <ul>
-          <li>
-            <NavLink to={appRoutes.subDemo({ id: '1' })}>To sub demo 1</NavLink>
-          </li>
-          <li>
-            <NavLink to={appRoutes.subDemo({ id: '2' })}>To sub demo 2</NavLink>
-          </li>
-        </ul>
-      </nav>
+      {isLoading && <p>Loading...</p>}
+      {!isLoading && (
+        <nav>
+          <ul>
+            {result.map(user => (
+              <li key={user.id}>
+                <NavLink to={appRoutes.subDemo({ id: user.id.toString() })}>{user.name}</NavLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
       <article>
-        <Outlet context={context} />
+        <Outlet context={{ users: result }} />
       </article>
       <Link to={appRoutes.home()}>Return to home</Link>
     </>
