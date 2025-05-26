@@ -20,7 +20,7 @@ export const SubDemo = () => {
       <p>Website: {currentUser.website}</p>
       <p>Company: {currentUser.company.name}</p>
       <p>
-        Address: {currentUser.address.street}, {currentUser.address.suite}, {currentUser.address.city}, $
+        Address: {currentUser.address.street}, {currentUser.address.suite}, {currentUser.address.city},{' '}
         {currentUser.address.zipcode}
       </p>
     </>
