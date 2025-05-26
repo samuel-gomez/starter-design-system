@@ -18,6 +18,6 @@
     "jsx": "react-jsx",
     "baseUrl": "."
   },
-  "include": ["src", "mocks", "vitest.setup.ts"],
+  "include": ["src", "mocks", "tests", "vitest.setup.ts"],
   "exclude": ["node_modules"]
 }

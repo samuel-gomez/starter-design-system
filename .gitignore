@@ -21,16 +21,15 @@ node_modules/
 coverage/
 junit-report.xml
 sonar-report.xml
+test-reports/
+.features-gen/
 
 ## production
 build/
 dist/
 
 ## misc
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+*.local
 
 ## msw
 /template/public/mockServiceWorker.js

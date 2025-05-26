@@ -88,6 +88,16 @@ jobs:
       - name: Run test
         run: npm run test
 
+      - name: Run Playwright install
+        uses: ./.github/actions/setup-template
+        with:
+          run-command: npm run playwright:install -- --with-deps
+
+      - name: Run init MSW
+        uses: ./.github/actions/setup-template
+        with:
+          run-command: npx msw init
+
       - name: Run test Template
         uses: ./.github/actions/setup-template
         with:

@@ -20,8 +20,8 @@ export default defineConfig(({ mode }) => {
       },
       reporters: ['default', 'junit', 'vitest-sonar-reporter'],
       outputFile: {
-        'vitest-sonar-reporter': 'sonar-report.xml',
-        junit: 'junit-report.xml',
+        'vitest-sonar-reporter': 'test-reports/unit/sonar-report.xml',
+        junit: 'test-reports/unit/junit-report.xml',
       },
       include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
       poolOptions: {
@@ -34,6 +34,7 @@ export default defineConfig(({ mode }) => {
         enabled: env.CI,
         provider: 'v8',
         reporter: ['lcovonly', 'html', 'text', 'text-summary', 'cobertura'],
+        reportsDirectory: 'test-reports/unit/coverage',
         lines: 80,
         functions: 75,
         branches: 80,
