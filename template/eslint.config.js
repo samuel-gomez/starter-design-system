@@ -26,6 +26,9 @@ export default defineConfig([
   eslintPrettierRecommended,
   jsxA11y.flatConfigs.recommended,
   {
+    ignores: ['tests/.features-gen']
+  },
+  {
     settings: {
       react: {
         version: 'detect',
