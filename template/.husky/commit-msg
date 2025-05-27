@@ -1,5 +1,5 @@
 npx --no -- commitlint --edit "$1" ||
 (
-    echo '❌ The commit name doesn't respect conventions';
+    echo "❌ The commit name doesn't respect conventions";
     false;
 )
