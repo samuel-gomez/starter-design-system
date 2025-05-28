@@ -3,6 +3,7 @@ import vitest from '@vitest/eslint-plugin';
 import importPlugin from 'eslint-plugin-import';
 import jestDom from 'eslint-plugin-jest-dom';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
+import playwright from 'eslint-plugin-playwright';
 import eslintPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
@@ -26,7 +27,7 @@ export default defineConfig([
   eslintPrettierRecommended,
   jsxA11y.flatConfigs.recommended,
   {
-    ignores: ['tests/.features-gen']
+    ignores: ['tests/.features-gen'],
   },
   {
     settings: {
@@ -161,6 +162,31 @@ export default defineConfig([
 
       // eslint-plugin-testing-library https://github.com/testing-library/eslint-plugin-testing-library
       'testing-library/prefer-query-matchers': 'error',
+    },
+  },
+  {
+    ...playwright.configs['flat/recommended'],
+    files: ['tests/**/*.{js,jsx,mjs,cjs,ts,tsx,cts,mts}'],
+    rules: {
+      ...playwright.configs['flat/recommended'].rules,
+      'playwright/prefer-to-have-length': 'error',
+      'playwright/prefer-to-have-count': 'error',
+      'playwright/prefer-to-contain': 'error',
+      'playwright/prefer-strict-equal': 'error',
+    },
+    settings: {
+      playwright: {
+        globalAliases: {
+          test: ['test', 'it', 'Given', 'When', 'Then', 'Step'],
+          expect: ['expect'],
+        },
+      },
+    },
+  },
+  {
+    files: ['tests/steps/**/*.{js,jsx,mjs,cjs,ts,tsx,cts,mts}'],
+    rules: {
+      'playwright/expect-expect': 'off',
     },
   },
   {
