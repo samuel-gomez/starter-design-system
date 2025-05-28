@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => {
         },
       },
       coverage: {
-        enabled: env.CI,
+        enabled: env.CI === 'true',
         reporter: ['lcovonly', 'html', 'text', 'text-summary'],
         provider: 'v8',
         lines: 80,
