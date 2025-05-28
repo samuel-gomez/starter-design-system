@@ -35,9 +35,9 @@ Then('I see the list of users', async ({ page }, dataTable: DataTable) => {
   const data = dataTable.hashes() as Record<'user', string>[];
 
   await Promise.all(
-    data.map(row => {
+    data.map(async row => {
       const userName = row.user;
-      expect(page.getByRole('link', { name: userName })).toBeVisible();
+      await expect(page.getByRole('link', { name: userName })).toBeVisible();
     }),
   );
 });
@@ -50,9 +50,9 @@ Then("The user's information is displayed", async ({ page }, dataTable: DataTabl
   const data = dataTable.hashes() as Record<string, string>[];
 
   await Promise.all(
-    data.map(async row => {
-      Object.keys(row).forEach(key => {
-        expect(page.getByText(`${key}: ${row[key]}`)).toBeVisible();
+    data.map(row => {
+      Object.keys(row).forEach(async key => {
+        await expect(page.getByText(`${key}: ${row[key]}`)).toBeVisible();
       });
     }),
   );
