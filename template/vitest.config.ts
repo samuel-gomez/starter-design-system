@@ -31,7 +31,7 @@ export default defineConfig(({ mode }) => {
         },
       },
       coverage: {
-        enabled: env.CI,
+        enabled: env.CI === 'true',
         provider: 'v8',
         reporter: ['lcovonly', 'html', 'text', 'text-summary', 'cobertura'],
         reportsDirectory: 'test-reports/unit/coverage',
