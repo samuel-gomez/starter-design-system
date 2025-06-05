@@ -1,5 +1,5 @@
 import { cpSync, readFileSync, renameSync, writeFileSync } from 'fs';
-import { resolve } from 'path';
+import { resolve, sep } from 'path';
 import { fileURLToPath } from 'url';
 
 type PrepareRepositoryArgs = {
@@ -14,7 +14,7 @@ export const prepareRepository = ({ projectPath, projectName }: PrepareRepositor
   cpSync(templatePath, projectPath, {
     recursive: true,
     dereference: true,
-    filter: src => !src.includes('node_modules'),
+    filter: src => !src.includes(`template${sep}node_modules`),
   });
 
   // Initialize the package.json file
