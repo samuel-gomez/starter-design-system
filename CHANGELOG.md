@@ -1,3 +1,9 @@
+## [1.0.0-alpha.2](https://github.com/samuel-gomez/starter-design-system/compare/v1.0.0-alpha.1...v1.0.0-alpha.2) (2025-06-05)
+
+### Bug Fixes
+
+* update filter to exclude node_modules in template path ([9f66938](https://github.com/samuel-gomez/starter-design-system/commit/9f66938e8086017ae6edeba13586ab32c95e8611))
+
 ## 1.0.0-alpha.1 (2025-06-05)
 
 ### Features
