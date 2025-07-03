@@ -1,16 +1,21 @@
 import { waitFor } from '@testing-library/react';
-import { setupWorker } from 'msw/browser';
-import { afterAll, beforeAll, describe, expect, it, type Mock, vi } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
+import { worker } from '../../mocks/browser';
 
-vi.mock('msw/browser', () => ({
-  setupWorker: vi.fn(),
+vi.mock('../../mocks/browser', () => ({
+  worker: {
+    start: vi.fn(),
+  },
+}));
+
+vi.mock('../App/App', () => ({
+  App: () => <div>AppMock</div>,
 }));
 
 beforeAll(async () => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-expect-error
   import.meta.env.FRONT_MOCK_ENABLE = 'true';
-  await import('../main');
 });
 
 afterAll(() => {
@@ -21,14 +26,11 @@ afterAll(() => {
 
 describe('main.ts', () => {
   it('should register the custom element react-app', async () => {
-    const start = vi.fn();
-    (setupWorker as Mock).mockImplementation(() => ({
-      start,
-    }));
+    await import('../main');
     await waitFor(() => {
       expect(customElements.get('react-app')).toBeDefined();
     });
-    expect(setupWorker).toHaveBeenCalledWith();
-    expect(start).toHaveBeenCalledWith({ onUnhandledRequest: 'warn' });
+
+    expect(worker.start).toHaveBeenCalledWith({ onUnhandledRequest: 'warn' });
   });
 });
