@@ -70,7 +70,7 @@
     "msw": "^2.10.2",
     "nodemon": "^3.1.10",
     "playwright-bdd": "^8.3.1",
-    "prettier": "^3.5.3",
+    "prettier": "^3.6.2",
     "prettier-plugin-gherkin": "^3.1.2",
     "rimraf": "^6.0.1",
     "stylelint": "^16.20.0",
