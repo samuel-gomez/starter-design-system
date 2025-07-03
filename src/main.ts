@@ -32,6 +32,7 @@ export const main = async () => {
     `Inside that directory, you can run several commands:
  ${pc.cyan('npm start')}    Starts the development server.
  ${pc.cyan('npm build')}    Bundles the app into static files for production.
+ ${pc.cyan('npm test')}     Runs tests using Vitest and Playwright.
 
 We suggest that you begin by typing:
  ${pc.cyan('cd')} ${projectName}

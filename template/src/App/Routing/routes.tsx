@@ -1,4 +1,5 @@
 import { Navigate, Outlet, type RouteObject } from 'react-router';
+import { formDemoRoutes } from 'src/pages/FormDemo/route';
 import { Layout } from '../../Layout/Layout';
 import { demoRoutes } from '../../pages/Demo/route';
 import { homeRoutes } from '../../pages/Home/route';
@@ -12,7 +13,7 @@ const rootRoutes: RouteObject = {
       <Outlet />
     </Layout>
   ),
-  children: [homeRoutes, demoRoutes],
+  children: [homeRoutes, demoRoutes, formDemoRoutes],
 };
 
 const fallbackRoute: RouteObject = {
