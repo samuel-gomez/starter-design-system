@@ -1,5 +1,7 @@
 import { type PropsWithChildren, useLayoutEffect, useRef } from 'react';
+import { NavLink } from 'react-router';
 
+import { appRoutes } from '../App/Routing/appRoutes';
 import defaultClasses from './Layout.module.css';
 
 export const Layout = ({ children }: PropsWithChildren) => {
@@ -17,11 +19,27 @@ export const Layout = ({ children }: PropsWithChildren) => {
 
   return (
     <>
-      <header className={defaultClasses.header}>Header</header>
-      <main className={defaultClasses.main} ref={mainRef}>
+      <header className={defaultClasses.header} role="banner">
+        <nav aria-label="Main navigation">
+          <ul>
+            <li>
+              <NavLink to={appRoutes.home()}>Home</NavLink>
+            </li>
+            <li>
+              <NavLink to={appRoutes.demo()}>Demo</NavLink>
+            </li>
+            <li>
+              <NavLink to={appRoutes.formDemo()}>Form Demo</NavLink>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main className={defaultClasses.main} ref={mainRef} role="main">
         {children}
       </main>
-      <footer className={defaultClasses.footer}>Footer</footer>
+      <footer className={defaultClasses.footer} role="contentinfo">
+        Footer
+      </footer>
     </>
   );
 };

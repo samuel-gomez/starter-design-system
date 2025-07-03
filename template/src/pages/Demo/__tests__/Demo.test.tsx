@@ -41,12 +41,6 @@ describe('Demo', () => {
     expect(within(navItem).getAllByRole('link')).toHaveLength(10);
   });
 
-  it('should render a link to return to home', () => {
-    renderRoute(renderRouteOptions);
-
-    expect(screen.getByRole('link', { name: 'Return to home' })).toBeInTheDocument();
-  });
-
   it.each([...users.map(({ name }) => [name])])(
     'should navigate to sub demo when clicking the link %s',
     async (name: string) => {

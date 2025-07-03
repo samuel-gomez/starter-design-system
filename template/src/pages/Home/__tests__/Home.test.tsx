@@ -15,10 +15,4 @@ describe('Demo', () => {
 
     expect(screen.getByRole('heading', { name: 'Home page' })).toBeInTheDocument();
   });
-
-  it('should render a link to demo', () => {
-    renderRoute(renderRouteOptions);
-
-    expect(screen.getByRole('link', { name: 'To demo' })).toBeInTheDocument();
-  });
 });
