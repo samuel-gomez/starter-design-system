@@ -1,4 +1,5 @@
 import { waitFor } from '@testing-library/react';
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { afterEach, beforeEach, describe, expect, it, type Mock, vi } from 'vitest';
 import { App } from '../App';
@@ -35,7 +36,11 @@ describe('AppHTMLElement', () => {
     document.body.appendChild(container);
 
     expect(createRoot as Mock).toHaveBeenCalledWith(expect.anything());
-    expect(render).toBeCalledWith(<App />);
+    expect(render).toBeCalledWith(
+      <StrictMode>
+        <App />
+      </StrictMode>,
+    );
     expect(unmount).not.toHaveBeenCalled();
   });
 
