@@ -1,7 +1,11 @@
 import { expect } from '@playwright/test';
-import { createBdd, DataTable } from 'playwright-bdd';
+import { DataTable } from 'playwright-bdd';
+import { getDemoData200 } from '../../mocks/handlers/demoHandlers';
+import { Given, Then, When } from './fixture/playwrightBdd.fixture';
 
-const { Given, Then, When } = createBdd();
+Given('All users are loaded from the API', async ({ network }) => {
+  network.use(getDemoData200);
+});
 
 Given('I am on the home page', async ({ page }) => {
   await page.goto('/');
