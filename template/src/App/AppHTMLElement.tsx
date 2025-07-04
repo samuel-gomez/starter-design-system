@@ -1,3 +1,4 @@
+import { StrictMode } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { App } from './App';
 
@@ -11,7 +12,11 @@ export class AppHTMLElement extends HTMLElement {
   }
 
   connectedCallback() {
-    this.root.render(<App />);
+    this.root.render(
+      <StrictMode>
+        <App />
+      </StrictMode>,
+    );
   }
 
   disconnectedCallback() {
