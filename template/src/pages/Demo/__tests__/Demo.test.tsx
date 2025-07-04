@@ -1,13 +1,12 @@
 import { screen, waitFor, waitForElementToBeRemoved, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it } from 'vitest';
-import demoFixtures from '../../../../mocks/fixtures/demoFixture.json';
+import { users } from '../../../../mocks/fixtures/demoFixture';
 import { getDemoData200 } from '../../../../mocks/handlers/demoHandlers';
 import { server } from '../../../../mocks/server';
 import { appRoutes } from '../../../App/Routing/appRoutes';
 import { renderRoute, type RenderRouteOptions } from '../../../shared/tests/renderRoute';
 
-import type { Users } from '../demo.type';
 import { demoRoutes } from '../route';
 
 describe('Demo', () => {
@@ -48,7 +47,7 @@ describe('Demo', () => {
     expect(screen.getByRole('link', { name: 'Return to home' })).toBeInTheDocument();
   });
 
-  it.each([...(demoFixtures as Users).map(({ name }) => [name])])(
+  it.each([...users.map(({ name }) => [name])])(
     'should navigate to sub demo when clicking the link %s',
     async (name: string) => {
       const user = userEvent.setup();

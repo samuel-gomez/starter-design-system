@@ -8,11 +8,7 @@ export default defineConfig({
     features: ['tests/features/**/*.feature'],
     featuresRoot: './tests/features/',
     outputDir: './tests/.features-gen',
-    steps: ['tests/steps/**/*.stepDefinition.ts'],
-    importTestFrom: 'tests/utils/playwright.testWithCoverage.ts',
-    disableWarnings: {
-      importTestFrom: true,
-    },
+    steps: ['tests/steps/**/*.stepDefinition.ts', 'tests/steps/**/*.fixture.ts'],
   }),
   outputDir: './test-reports/e2e/test-results',
   fullyParallel: true,
@@ -47,7 +43,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'npm run build -- --mode mock && npm run preview',
+    command: 'npm run build -- --mode test && npm run preview',
     url: appUrl,
     stdout: 'pipe',
     reuseExistingServer: !process.env.CI,
