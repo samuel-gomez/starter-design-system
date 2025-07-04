@@ -1,6 +1,6 @@
 import MCR from 'monocart-coverage-reports';
 import { test as base } from 'playwright-bdd';
-import { coverageOptions } from '../../mrc.e2e.config';
+import { coverageOptions } from '../../../mrc.e2e.config';
 
 export const test = base.extend<{
   testWithCoverage: string;
