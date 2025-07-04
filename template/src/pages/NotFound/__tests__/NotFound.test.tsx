@@ -1,25 +1,23 @@
-import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router';
+import { screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { NotFound } from '../NotFound';
+import { appRoutes } from '../../../App/Routing/appRoutes';
+import { renderRoute, type RenderRouteOptions } from '../../../shared/tests/renderRoute';
+import { notFoundRoutes } from '../route';
 
 describe('NotFound', () => {
+  const renderRouteOptions: RenderRouteOptions = {
+    routes: [notFoundRoutes],
+    routesOptions: { initialEntries: [appRoutes.notFound()] },
+  };
+
   it('should render the 404 title', () => {
-    render(
-      <MemoryRouter>
-        <NotFound />
-      </MemoryRouter>,
-    );
+    renderRoute(renderRouteOptions);
 
     expect(screen.getByRole('heading', { name: /Not Found/i })).toBeInTheDocument();
   });
 
   it('should render a link to the home page', () => {
-    render(
-      <MemoryRouter>
-        <NotFound />
-      </MemoryRouter>,
-    );
+    renderRoute(renderRouteOptions);
 
     const link = screen.getByRole('link', { name: /Return to Home/i });
     expect(link).toBeInTheDocument();
@@ -27,11 +25,7 @@ describe('NotFound', () => {
   });
 
   it('should add the root class to the parent of the title', () => {
-    const { container, unmount } = render(
-      <MemoryRouter>
-        <NotFound />
-      </MemoryRouter>,
-    );
+    const { container, unmount } = renderRoute(renderRouteOptions);
 
     expect(container).toHaveClass('root');
 

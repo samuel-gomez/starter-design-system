@@ -40,7 +40,12 @@ export default defineConfig(({ mode }) => {
         branches: 80,
         statements: 80,
         include: ['src/**/*.[jt]s?(x)'],
-        exclude: ['src/**/*.d.[jt]s?(x)', 'src/**/*.types.[jt]s?(x)', 'src/**/index.[jt]s?(x)'],
+        exclude: [
+          'src/**/*.d.[jt]s?(x)',
+          'src/**/*.types.[jt]s?(x)',
+          'src/**/index.[jt]s?(x)',
+          'src/shared/tests/**/*.[jt]s?(x)',
+        ],
       },
     },
   };

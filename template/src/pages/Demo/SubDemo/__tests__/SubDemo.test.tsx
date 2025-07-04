@@ -1,33 +1,21 @@
-import { QueryClient } from '@tanstack/react-query';
-import { render, screen } from '@testing-library/react';
-import { createMemoryRouter, RouterProvider } from 'react-router';
+import { screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { getDemoData200Empty } from '../../../../../mocks/handlers/demoHandlers';
 import { server } from '../../../../../mocks/server';
-import { Providers } from '../../../../App/providers/Providers/Providers';
+import { appRoutes } from '../../../../App/Routing/appRoutes';
+import { renderRoute, type RenderRouteOptions } from '../../../../shared/tests/renderRoute';
 import { demoRoutes } from '../../route';
 
 describe('SubDemo Component', () => {
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        retry: false,
-        refetchOnWindowFocus: false,
-        refetchOnReconnect: false,
-      },
-    },
-  });
+  const renderRouteOptions: RenderRouteOptions = {
+    routes: [demoRoutes],
+    routesOptions: { initialEntries: [appRoutes.subDemo({ id: '1' })] },
+  };
 
   it('should display "Loading ..." when currentUser is not found', () => {
     server.use(getDemoData200Empty);
 
-    const router = createMemoryRouter([demoRoutes], { initialEntries: ['/demo/1'] });
-
-    render(
-      <Providers queryClient={queryClient}>
-        <RouterProvider router={router} />
-      </Providers>,
-    );
+    renderRoute(renderRouteOptions);
 
     expect(screen.getByText('Loading ...')).toBeInTheDocument();
   });
