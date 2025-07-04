@@ -1,5 +1,8 @@
 Feature: Demo
 
+  Background:
+    Given All users are loaded from the API
+
   Scenario: Access the Demo page from the home page
     Given I am on the home page
     When I click on the link "To demo"
