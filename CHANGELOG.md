@@ -1,3 +1,19 @@
+## [1.0.0-alpha.3](https://github.com/samuel-gomez/starter-design-system/compare/v1.0.0-alpha.2...v1.0.0-alpha.3) (2025-07-07)
+
+### Features
+
+* add configuration to use msw with playwright ([a148378](https://github.com/samuel-gomez/starter-design-system/commit/a1483786d34bff9067b00f0cbe8ad521c44cc599))
+* add eslint-plugin-playwright configuration for test files ([95bf903](https://github.com/samuel-gomez/starter-design-system/commit/95bf903810dcc3ba155616e117e252ad0ab006e8))
+* wrap App component in StrictMode for improved rendering ([ea97f8a](https://github.com/samuel-gomez/starter-design-system/commit/ea97f8aec3c983893fc883ae563070648ab62aca))
+
+### Bug Fixes
+
+* **deps:** update dependency react-router to ^7.6.2 ([63bdb44](https://github.com/samuel-gomez/starter-design-system/commit/63bdb44df21601c59cc57a25a3a7e91ed0878856))
+* **deps:** update dependency react-router to ^7.6.3 ([0e2c631](https://github.com/samuel-gomez/starter-design-system/commit/0e2c6318183d5f51e365b5f34917f8778cf90767))
+* **deps:** update react-query mono repo to ^5.80.6 ([0b3b87c](https://github.com/samuel-gomez/starter-design-system/commit/0b3b87c18e422c5de7f72887048c11658851b3d6))
+* **deps:** update react-query mono repo to ^5.80.7 ([0e59465](https://github.com/samuel-gomez/starter-design-system/commit/0e59465014e90adf8b2f55f5db304953345623d8))
+* **deps:** update react-query mono repo to ^5.81.5 ([e680df9](https://github.com/samuel-gomez/starter-design-system/commit/e680df98a21b8a9252250c4cbc5c9d9fb76f9b78))
+
 ## [1.0.0-alpha.2](https://github.com/samuel-gomez/starter-design-system/compare/v1.0.0-alpha.1...v1.0.0-alpha.2) (2025-06-05)
 
 ### Bug Fixes
