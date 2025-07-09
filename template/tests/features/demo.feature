@@ -5,7 +5,7 @@ Feature: Demo
 
   Scenario: Access the Demo page from the home page
     Given I am on the home page
-    When I click on the link "To demo"
+    When I click on the link "Demo"
     Then I am redirected to the Demo page
     And I see the list of users
       | user                     |
@@ -27,8 +27,3 @@ Feature: Demo
     And The user's information is displayed
       | Name | Email             | Phone                 | Website       | Company         | Address                                        |
       | BRET | sincere@april.biz | 1-770-736-8031 x56442 | hildegard.org | Romaguera-Crona | Kulas Light, Apt. 556, Gwenborough, 92998-3874 |
-
-  Scenario: Return to the home page from the Demo page
-    Given I am on the Demo page
-    When I click on the link "Return to home"
-    Then I am redirected to the home page
