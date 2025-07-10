@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from 'react-router';
+import { NavLink, Outlet } from 'react-router';
 import { appRoutes } from '../../App/Routing/appRoutes';
 import { useDemoApi } from './hook/useDemoApi';
 
@@ -10,7 +10,7 @@ export const Demo = () => {
       <h1>Demo page</h1>
       {isLoading && <p>Loading...</p>}
       {!isLoading && (
-        <nav>
+        <nav aria-label="Users navigation">
           <ul>
             {result.map(user => (
               <li key={user.id}>
@@ -23,7 +23,6 @@ export const Demo = () => {
       <article>
         <Outlet context={{ users: result }} />
       </article>
-      <Link to={appRoutes.home()}>Return to home</Link>
     </>
   );
 };

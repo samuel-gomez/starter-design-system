@@ -16,7 +16,7 @@ Given('I am on the Demo page', async ({ page }) => {
 });
 
 When('I click on the link {string}', async ({ page }, linkText) => {
-  await page.getByRole('link', { name: linkText }).click();
+  await page.getByRole('link', { name: linkText, exact: true }).click();
 });
 
 When('I click on the user name {string}', async ({ page }, userName) => {
