@@ -20,6 +20,6 @@ export class AppHTMLElement extends HTMLElement {
   }
 
   disconnectedCallback() {
-    queueMicrotask(() => this.root.unmount());
+    this.root.unmount();
   }
 }
