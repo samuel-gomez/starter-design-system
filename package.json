@@ -80,7 +80,7 @@
     "semantic-release": "^24.2.6",
     "tsc-files": "^1.1.4",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.35.1",
+    "typescript-eslint": "^8.37.0",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.2.4",
     "vitest-sonar-reporter": "^2.0.1"
