@@ -4,6 +4,7 @@ import { App } from './App';
 
 export class AppHTMLElement extends HTMLElement {
   private readonly root: Root;
+  private isMounted = false;
 
   constructor() {
     super();
@@ -12,6 +13,7 @@ export class AppHTMLElement extends HTMLElement {
   }
 
   connectedCallback() {
+    this.isMounted = true;
     this.root.render(
       <StrictMode>
         <App />
@@ -20,6 +22,12 @@ export class AppHTMLElement extends HTMLElement {
   }
 
   disconnectedCallback() {
-    this.root.unmount();
+    this.isMounted = false;
+
+    queueMicrotask(() => {
+      if (!this.isMounted) {
+        this.root.unmount();
+      }
+    });
   }
 }
