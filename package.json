@@ -83,7 +83,7 @@
     "typescript-eslint": "^8.38.0",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.2.4",
-    "vitest-sonar-reporter": "^2.0.1"
+    "vitest-sonar-reporter": "^2.0.4"
   },
   "lint-staged": {
     "{package,package-lock}.json": "npm run package:check",
