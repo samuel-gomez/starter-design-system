@@ -8,9 +8,9 @@ type InstallPackagesArgs = {
 };
 
 const designSystemVersion: Record<DesignSystem, 'latest' | 'next'> = {
-  apollo: 'next',
+  apollo: 'latest',
   slash: 'latest',
-  'look&feel': 'next',
+  'look&feel': 'latest',
 };
 
 const installDesignSystem = async (projectPath: string, designSystem: DesignSystem) => {
