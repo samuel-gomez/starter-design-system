@@ -19,11 +19,11 @@ describe('installPackages', () => {
   });
 
   it.each([
-    ['apollo', '@axa-fr/design-system-apollo-react@next @axa-fr/design-system-apollo-css@next'],
+    ['apollo', '@axa-fr/design-system-apollo-react@latest @axa-fr/design-system-apollo-css@latest'],
     ['slash', '@axa-fr/design-system-slash-react@latest @axa-fr/design-system-slash-css@latest'],
     [
       'look&feel',
-      '@axa-fr/design-system-look-and-feel-react@next @axa-fr/design-system-look-and-feel-css@next @axa-fr/design-system-apollo-react@next @axa-fr/design-system-apollo-css@next',
+      '@axa-fr/design-system-look-and-feel-react@latest @axa-fr/design-system-look-and-feel-css@latest @axa-fr/design-system-apollo-react@latest @axa-fr/design-system-apollo-css@latest',
     ],
   ])('should handle %s design systems', async (name, packages) => {
     const mockRunCommand = runCommand as Mock;
