@@ -11,8 +11,8 @@ export type RenderRouteOptions = {
   providerOptions?: Partial<ComponentProps<typeof Providers>>;
 };
 
-export const queryClient = () =>
-  new QueryClient({
+export const renderRoute = ({ routes, routesOptions, renderOptions, providerOptions }: RenderRouteOptions) => {
+  const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
         retry: false,
@@ -21,12 +21,10 @@ export const queryClient = () =>
       },
     },
   });
-
-export const renderRoute = ({ routes, routesOptions, renderOptions, providerOptions }: RenderRouteOptions) => {
   const router = createMemoryRouter(routes, routesOptions);
 
   return render(
-    <Providers queryClient={queryClient()} {...providerOptions}>
+    <Providers queryClient={queryClient} {...providerOptions}>
       <RouterProvider router={router} />
     </Providers>,
     renderOptions,
