@@ -69,7 +69,7 @@
     "jsdom": "^27.0.0",
     "lint-staged": "^16.2.0",
     "monocart-coverage-reports": "^2.12.9",
-    "msw": "^2.11.3",
+    "msw": "^2.11.6",
     "nodemon": "^3.1.10",
     "playwright-bdd": "^8.4.1",
     "prettier": "^3.6.2",
