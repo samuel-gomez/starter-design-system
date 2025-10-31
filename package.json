@@ -93,7 +93,7 @@
     "*.!(js|jsx|mjs|ts|tsx)": "prettier --write --ignore-unknown"
   },
   "volta": {
-    "node": "22.21.0",
+    "node": "22.21.1",
     "npm": "11.6.0"
   }
 }
