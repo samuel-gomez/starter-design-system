@@ -82,7 +82,7 @@
     "stylelint-prettier": "^5.0.3",
     "tsc-files": "^1.1.4",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.44.1",
+    "typescript-eslint": "^8.46.3",
     "vite": "^7.1.12",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.2.4",
