@@ -70,7 +70,7 @@
     "lint-staged": "^16.2.6",
     "monocart-coverage-reports": "^2.12.9",
     "msw": "^2.11.6",
-    "nodemon": "^3.1.10",
+    "nodemon": "^3.1.11",
     "playwright-bdd": "^8.4.1",
     "prettier": "^3.6.2",
     "prettier-plugin-gherkin": "^3.1.3",
