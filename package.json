@@ -39,7 +39,7 @@
     "package:check": "npx --yes package-lock-utd@1.1.3",
     "release": "semantic-release",
     "prepare": "husky",
-    "prepublish": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "create",
