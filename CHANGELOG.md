@@ -1,3 +1,17 @@
+## [1.0.0-alpha.5](https://github.com/samuel-gomez/starter-design-system/compare/v1.0.0-alpha.4...v1.0.0-alpha.5) (2025-12-08)
+
+### Bug Fixes
+
+* **deps:** update dependency @tanstack/react-query to ^5.90.5 ([ccaf329](https://github.com/samuel-gomez/starter-design-system/commit/ccaf3297b85d7b5264092709da1e135b42fb6a5f))
+* **deps:** update dependency @tanstack/react-query to ^5.90.7 ([7fdb99e](https://github.com/samuel-gomez/starter-design-system/commit/7fdb99e36fa19ecfe38c77a44d2ad1e38dd321f3))
+* **deps:** update dependency react-hook-form to ^7.66.0 ([9f27dde](https://github.com/samuel-gomez/starter-design-system/commit/9f27dde9a8615819954b747b48c2c3e5d825c9b9))
+* **deps:** update dependency react-hook-form to ^7.68.0 ([a25dd7e](https://github.com/samuel-gomez/starter-design-system/commit/a25dd7e40ceea6d9e4d5693f168efa83b049a65a))
+* **deps:** update dependency react-router to ^7.9.4 ([73f41b6](https://github.com/samuel-gomez/starter-design-system/commit/73f41b69372d6826dfb60d50bc193639ff444e0f))
+* **deps:** update dependency react-router to ^7.9.5 ([cdcec42](https://github.com/samuel-gomez/starter-design-system/commit/cdcec42124dfe321d3b0a724a1fb93d968f7e750))
+* **deps:** update react monorepo ([00248cb](https://github.com/samuel-gomez/starter-design-system/commit/00248cbc5a583de731be41345fe551f7220ad1d9))
+* **deps:** update react monorepo ([44c0858](https://github.com/samuel-gomez/starter-design-system/commit/44c0858dd4e7b4ba4dc20315ed9467e81cdc6428))
+* **deps:** update react-query mono repo ([9a09f4d](https://github.com/samuel-gomez/starter-design-system/commit/9a09f4d5f7a9a39fbc993949377d82e2edc2b656))
+
 ## [1.0.0-alpha.4](https://github.com/samuel-gomez/starter-design-system/compare/v1.0.0-alpha.3...v1.0.0-alpha.4) (2025-09-26)
 
 ### Features
